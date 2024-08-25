@@ -1,129 +1,59 @@
+# AgroInova - Smart Agribusiness
 
-# Agricultura Digital Project
+## Visão Geral
 
-## Descrição do Projeto
+O AgroInova é uma solução de software desenvolvida para ajudar agricultores a gerenciar suas operações agrícolas de forma mais eficiente. Através da integração de dados sobre solo, clima e insumos agrícolas, o AgroInova fornece recomendações precisas para o manejo de fertilizantes e herbicidas, contribuindo para uma melhor produtividade e sustentabilidade.
 
-Este projeto tem como objetivo calcular a área de plantio e o manejo de insumos para as culturas agrícolas de café e cana-de-açúcar. A aplicação foi desenvolvida em Python, com um módulo adicional em R para realizar análises estatísticas dos dados coletados.
+## Funcionalidades Principais
+
+- **Cálculo de Manejo de Insumos**: Com base em dados sobre o solo, clima e área plantada, o AgroInova calcula a quantidade necessária de fertilizantes (N, P2O5, K2O) e herbicidas para culturas específicas.
+- **Exportação de Dados**: Os dados gerados são salvos em um arquivo Parquet, facilitando a análise posterior.
+- **Análise Estatística**: Um script em R é fornecido para calcular estatísticas básicas (média, desvio padrão) e gerar insights a partir dos dados salvos.
+
+## Alterações Recentes
+
+### 1. Remoção do Histórico de Cultivo
+
+Anteriormente, o cálculo de manejo de insumos considerava o histórico de cultivo (rotatividade de culturas) como um dos fatores de ajuste. Esta funcionalidade foi removida para simplificar o cálculo e focar nas variáveis de solo e clima. 
+
+Agora, o cálculo considera apenas:
+
+- **Tipo de Solo**: Ajuste baseado no tipo de solo (arenoso, argiloso, etc.).
+- **pH do Solo**: Ajuste baseado no pH do solo, que influencia a disponibilidade de nutrientes.
+- **Condições Climáticas**: Ajuste baseado na previsão do clima (sol, chuva, nublado).
+
+### 2. Ajuste na Função `calcular_manejo_insumos`
+
+A função `calcular_manejo_insumos` foi simplificada, removendo qualquer influência do histórico de cultivo. O foco agora está no tipo de solo, pH e condições climáticas.
 
 ## Estrutura do Projeto
 
-A estrutura de diretórios do projeto é organizada da seguinte forma:
+- **`main.py`**: Script principal onde os dados são inseridos e o cálculo de manejo de insumos é realizado.
+- **`area_calculations.py`**: Contém funções para calcular a área plantada, considerando diferentes formas geométricas.
+- **`manejo_insumos.py`**: Contém as recomendações padrão para cada cultura e a lógica para calcular as quantidades necessárias de fertilizantes e herbicidas.
+- **`r_project/analysis.R`**: Script em R para análise estatística dos dados gerados, incluindo cálculo de média e desvio padrão.
+- **`r_project/requirements.R`**: Lista de pacotes necessários para executar a análise em R.
+- **`data/processed/`**: Diretório onde os arquivos Parquet gerados são armazenados.
+- **`data/output/`**: Diretório onde os resultados da análise em R são salvos.
 
-```
-/AgriculturaDigitalProject
-│
-├── /data
-│   ├── /processed          # Dados processados, incluindo arquivos Parquet
-│   │   └── dados_agricultura.parquet
-│   └── /output             # Resultados finais, gráficos, relatórios, etc.
-│
-├── /python
-│   ├── __init__.py
-│   ├── main.py             # Script principal em Python para cálculos e exportação
-│   ├── area_calculations.py # Funções de cálculo de área
-│   └── manejo_insumos.py    # Funções de manejo de insumos
-│
-├── /r
-│   ├── analysis.R          # Script R para análise estatística dos dados Parquet
-│   └── requirements.R      # Lista de pacotes necessários para o ambiente R
-│
-├── /docs
-│   └── README.md           # Instruções gerais sobre o projeto
-│
-└── /env
-    ├── requirements.txt    # Dependências para Python
-    └── environment.yml     # Arquivo YAML para Conda, se estiver usando
-```
+## Instruções de Uso
 
-## Configuração do Ambiente
+### 1. Executar o Código Python
 
-### 1. Configuração do Ambiente Python
+1. Certifique-se de ter instalado os pacotes necessários: `pandas`, `pyarrow`.
+2. Execute o script `main.py` para inserir os dados e calcular as quantidades de insumos.
+3. O arquivo Parquet gerado será salvo em `data/processed/dados_agricultura.parquet`.
 
-Para configurar o ambiente Python, siga os passos abaixo:
+### 2. Executar o Código R
 
-1. **Clone o repositório:**
+1. Instale os pacotes necessários mencionados em `r_project/requirements.R`.
+2. Execute o script `r_project/analysis.R` para ler o arquivo Parquet e calcular as estatísticas.
+3. Os resultados serão salvos em `data/output/estatisticas_culturas.csv`.
 
-   ```bash
-   git clone https://github.com/seu-usuario/AgriculturaDigitalProject.git
-   cd AgriculturaDigitalProject/python
-   ```
+## Contribuições
 
-2. **Crie um ambiente virtual e instale as dependências:**
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   .\venv\Scripts\activate  # Windows
-   pip install -r ../env/requirements.txt
-   ```
-
-3. **Execute o script Python:**
-
-   ```bash
-   python main.py
-   ```
-
-### 2. Configuração do Ambiente R
-
-Para configurar o ambiente R, siga os passos abaixo:
-
-1. **Instale as dependências do R:**
-
-   Navegue até a pasta `/r` e execute o script `requirements.R` no R ou RStudio para instalar os pacotes necessários.
-
-   ```r
-   source("requirements.R")
-   ```
-
-2. **Execute a análise:**
-
-   Depois que os dados forem gerados pelo script Python, você pode realizar a análise estatística no R:
-
-   ```r
-   source("analysis.R")
-   ```
-
-## Uso da Aplicação
-
-### Passo a Passo
-
-1. **Entrada de Dados:**
-   - No menu do script Python (`main.py`), escolha a cultura (café ou cana-de-açúcar).
-   - Informe as dimensões necessárias para calcular a área (lado do hexágono para café, ou comprimento e largura para cana-de-açúcar).
-   - Insira informações sobre o pH do solo e a previsão do clima.
-   - O programa calculará automaticamente a quantidade de fertilizante e herbicida necessários e salvará os dados em um arquivo Parquet.
-
-2. **Análise dos Dados:**
-   - Use o script R (`analysis.R`) para carregar os dados do arquivo Parquet e realizar análises estatísticas, como cálculo de médias e desvios padrão.
-
-3. **Resultados e Gráficos:**
-   - O script R também gera gráficos que podem ser encontrados na pasta `/data/output`.
-
-## Estrutura de Dados
-
-Os dados manipulados pelo projeto são organizados da seguinte forma:
-
-- **`cultura:`** A cultura selecionada (café ou cana-de-açúcar).
-- **`area:`** A área calculada em metros quadrados.
-- **`ph_solo:`** O pH do solo informado.
-- **`clima_previsao:`** A previsão do clima informada (sol/chuva).
-- **`quantidade_fertilizante:`** Quantidade de fertilizante necessária (em litros).
-- **`quantidade_herbicida:`** Quantidade de herbicida necessária (em litros).
-
-## Contribuição
-
-Contribuições para o projeto são bem-vindas. Siga as etapas abaixo para contribuir:
-
-1. Faça um fork do repositório.
-2. Crie uma branch para suas alterações (`git checkout -b feature/nova-funcionalidade`).
-3. Commit suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
-4. Faça o push para a branch (`git push origin feature/nova-funcionalidade`).
-5. Abra um Pull Request para revisar suas alterações.
+Contribuições são bem-vindas! Por favor, faça um fork do repositório e envie um pull request com suas melhorias.
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais informações.
-
-## Contato
-
-Para mais informações, entre em contato com [Seu Nome](mailto:seu-email@example.com).
+Este projeto é licenciado sob a Licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
