@@ -1,3 +1,2 @@
-"cultura","media_area","desvio_padrao_area","media_fertilizante","desvio_padrao_fertilizante","media_herbicida","desvio_padrao_herbicida"
-"cafe",272747.339705977,308866.5,8182.4201911793,9265.995,4091.21009558965,4632.9975
-"cana-de-acucar",2966820.8,6618092.50984143,83121.2096,185278.675343746,59313.6256,132374.55585099
+"cultura","media_area","desvio_padrao_area","media_num_linhas","desvio_padrao_num_linhas","media_potassio_solo","desvio_padrao_potassio_solo","media_nitrogenio_solo","desvio_padrao_nitrogenio_solo","media_fosforo_solo","desvio_padrao_fosforo_solo","media_ph","desvio_padrao_ph","media_temperatura","desvio_padrao_temperatura","media_umidade","desvio_padrao_umidade","media_fertilizante_K","desvio_padrao_fertilizante_K","media_fertilizante_N","desvio_padrao_fertilizante_N","media_fertilizante_P","desvio_padrao_fertilizante_P","media_herbicida","desvio_padrao_herbicida"
+"cana-de-acucar",100,NA,2,NA,3,NA,15,NA,54,NA,7,NA,32,NA,17,NA,1.22936,NA,1.0428,NA,0.65648,NA,0.044,NA
