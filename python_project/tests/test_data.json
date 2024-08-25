@@ -1,0 +1,12 @@
+{
+    "cafe": {
+        "hectares": 100,
+        "produtividade": 25.5,
+        "custo_manejo": 5000
+    },
+    "cana": {
+        "hectares": 150,
+        "produtividade": 80,
+        "custo_manejo": 3000
+    }
+}
