@@ -24,8 +24,11 @@ Bem-vindo ao repositório do projeto **AgroInova**, desenvolvido pela equipe de 
 
 ## Estrutura do Projeto
 
-- **/src**  
-  Contém o código-fonte em Python e R.
+- **/python_project**  
+  Contém o código-fonte em Python.
+  
+- **/r_project**  
+  Contém o código-fonte em R.
   
 - **/data**  
   Dados de exemplo e arquivos de entrada utilizados para testes.
@@ -42,7 +45,6 @@ Bem-vindo ao repositório do projeto **AgroInova**, desenvolvido pela equipe de 
 
 - Python 3.x
 - R
-- Bibliotecas necessárias (ver `requirements.txt`)
 
 ### Passos para Executar
 
@@ -54,28 +56,18 @@ Bem-vindo ao repositório do projeto **AgroInova**, desenvolvido pela equipe de 
     ```bash
     cd AgroInova-SmartAgribusiness
     ```
-3. Instale as dependências:
+3. Execute o script principal em Python:
     ```bash
-    pip install -r requirements.txt
+    python python_project/gestao_agricola_agroinova.py
     ```
-4. Execute o script principal em Python:
+4. Para a análise estatística em R, execute o script `analise_dados_agricultura.R`:
     ```bash
-    python src/main.py
+    Rscript r_project/analise_dados_agricultura.R
     ```
-5. Para a análise estatística em R, execute o script `analysis.R`:
+5. Para consultar a API meteorológica em R, execute o script `consulta_clima_api_meteorologica.R`:
     ```bash
-    Rscript src/analysis.R
+    Rscript r_project/consulta_clima_api_meteorologica.R
     ```
-
-## Contribuições
-
-Contribuições são bem-vindas! Por favor, siga estas etapas para contribuir:
-
-1. Faça um fork do projeto.
-2. Crie uma branch para sua feature (`git checkout -b feature/sua-feature`).
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`).
-4. Faça o push para a branch (`git push origin feature/sua-feature`).
-5. Abra um Pull Request.
 
 ## Licença
 
