@@ -2,6 +2,9 @@ import os
 import pandas as pd
 import math
 
+# Variável global que armazena o caminho do arquivo
+NOME_ARQUIVO_PARQUET = '../data/processed/dados_agricultura.parquet'
+
 # Função para calcular a área de um hexágono dado o comprimento do lado
 def calcular_area_hexagono(lado):
     """
@@ -145,22 +148,22 @@ def coletar_dados_clima():
     }
 
 # Função para salvar os dados coletados em um arquivo no formato Parquet
-def salvar_dados_parquet(dados, nome_arquivo='../data/processed/dados_agricultura.parquet'):
+def salvar_dados_parquet(dados):
     """
     Salva os dados em um arquivo Parquet. Esse formato é eficiente para armazenamento de dados
     estruturados e permite rápida leitura e escrita.
     """
     df_novo = pd.DataFrame(dados)
-    df_novo.to_parquet(nome_arquivo)
+    df_novo.to_parquet(NOME_ARQUIVO_PARQUET)
 
 # Função para carregar os dados de um arquivo Parquet, se existir
-def carregar_dados_parquet(nome_arquivo='../data/processed/dados_agricultura.parquet'):
+def carregar_dados_parquet():
     """
     Carrega os dados salvos previamente em um arquivo Parquet.
     Se o arquivo não existir, retorna uma lista vazia.
     """
-    if os.path.exists(nome_arquivo):
-        return pd.read_parquet(nome_arquivo).to_dict(orient='records')
+    if os.path.exists(NOME_ARQUIVO_PARQUET):
+        return pd.read_parquet(NOME_ARQUIVO_PARQUET).to_dict(orient='records')
     else:
         return []
 
@@ -171,22 +174,11 @@ def exibir_menu():
     Permite que o usuário escolha entre registrar uma nova cultura, consultar, atualizar ou remover registros.
     """
     print("\n🌿 Bem-vindo ao AgroInova - Onde a Inovação Encontra a Agricultura 🌿")
-    print("\nVocê está prestes a transformar sua gestão agrícola. Escolha como deseja começar sua jornada:\n")
-
     print("1. 🌱 Registrar Nova Cultura")
-    print("   - Inicie sua jornada: Adicione dados sobre suas culturas, solo e clima. Cada registro é um passo para uma colheita mais próspera.")
-
     print("2. 🌾 Consultar Registros")
-    print("   - Explore seus registros: Reflita sobre o passado e descubra insights para otimizar sua produção.")
-
     print("3. ✏️ Atualizar Informações")
-    print("   - Aperfeiçoe seus dados: Mantenha suas informações atualizadas para garantir a precisão na gestão agrícola.")
-
     print("4. ❌ Remover Registro")
-    print("   - Limpe o desnecessário: Remova registros antigos e mantenha seu banco de dados enxuto e eficiente.")
-
     print("0. 🚪 Sair do AgroInova")
-    print("   - Finalize sua sessão: Tenha certeza de que seu trabalho está seguro e retorne quando precisar.")
 
 # Função para adicionar um novo registro de cultura
 def adicionar_registro(dados, recomendacoes):
