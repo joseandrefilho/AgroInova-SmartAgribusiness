@@ -1,4 +1,53 @@
-.Rproj.user
+
+# Python related
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyproj
+*.sublime-project
+*.sublime-workspace
+
+# PyCharm related
+.idea/
+*.iml
+*.ipr
+out/
+
+# R related
 .Rhistory
 .RData
-.Ruserdata
+.Rproj.user/
+.Rproj/
+*.Rhistory
+*.RData
+*.Ruserdata
+
+# MacOS related
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# VSCode related
+.vscode/
+
+# Other OS generated files
+Thumbs.db
+Desktop.ini
+*.swp
