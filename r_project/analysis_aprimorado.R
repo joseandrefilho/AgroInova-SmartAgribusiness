@@ -8,6 +8,10 @@ library(dplyr)  # Para manipulação de dados
 # Definir o caminho para o arquivo Parquet gerado no Python
 arquivo_parquet <- "../data/processed/dados_agricultura.parquet"
 
+if (!file.exists(arquivo_parquet)) {
+  stop("Arquivo Parquet não encontrado. Verifique o caminho.")
+}
+
 # Ler o arquivo Parquet para um dataframe
 df <- read_parquet(arquivo_parquet)
 
