@@ -111,4 +111,4 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ## Contato
 
-Para mais informações, entre em contato com a equipe através do e-mail: `contato@farmtechsolutions.com`.
+Para mais informações, entre em contato com a equipe através do e-mail: `rm87775@fiap.com.br`.
