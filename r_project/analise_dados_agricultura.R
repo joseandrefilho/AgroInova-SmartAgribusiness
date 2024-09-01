@@ -114,8 +114,6 @@ gerar_insights <- function(estatisticas) {
         cat("RECOMENDAÇÃO: Previsão de chuva. Planeje a aplicação de herbicidas e fertilizantes para evitar perdas.\n")
       }
     }
-    
-    # Adicione mais insights conforme necessário para outras variáveis
   }
 }
 

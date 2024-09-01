@@ -7,12 +7,12 @@ library(httr)
 library(jsonlite)
 
 # Defina sua chave de API
-api_key <- "73caffe41a1645cd872151857243108"  # Substitua "sua_chave_api" pela chave que você obteve
+api_key <- "73caffe41a1645cd872151857243108"
 
 # Defina a localização para a qual deseja obter os dados meteorológicos (por exemplo, São Paulo, Brasil)
 cidade <- "São Paulo"
 
-# Construa a URL da requisição
+# URL da requisição
 url <- URLencode(paste0("http://api.weatherapi.com/v1/current.json?key=", api_key, "&q=", cidade, "&lang=pt"))
 
 # Verifique a URL gerada (opcional)
